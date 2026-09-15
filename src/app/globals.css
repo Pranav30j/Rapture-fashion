@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #080908;
+  --color-deep-emerald: #062E24;
+  --color-emerald: #0B5D45;
+  --color-blood-red: #6E0915;
+  --color-crimson: #9B1025;
+  --color-antique-gold: #C8A45D;
+  --color-champagne: #E6D3A3;
+  --color-ivory: #F4F0E7;
+
+  --font-display: "Bodoni Moda", "Didot", "Playfair Display", serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+  --font-accent: "Cormorant Garamond", "Georgia", serif;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcviYwYZ90OmSqEpJpE.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/bodonimoda/v27/aFT67PxzY382XsXX63LUYL6GYFcan6NJrKp-VPjfJMShrpsGFUt8oXzaiQ.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYrEtFmSqn.woff2") format("woff2");
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #080908;
+  color: #F4F0E7;
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #C8A45D;
+  color: #080908;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080908;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8A45D;
+  border-radius: 2px;
+}
+
+.font-display {
+  font-family: "Bodoni Moda", "Didot", "Playfair Display", serif;
+}
+
+.font-accent {
+  font-family: "Cormorant Garamond", "Georgia", serif;
+}
+
+.text-editorial {
+  font-family: "Bodoni Moda", "Didot", serif;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineReveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes textReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #C8A45D 0%, #E6D3A3 50%, #C8A45D 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@supports (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gold-shimmer {
+    animation: none;
+  }
+}
